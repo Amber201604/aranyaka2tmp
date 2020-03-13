@@ -1,0 +1,247 @@
+/* miniprogram/pages/eventDetails/eventDetails.wxss */
+.container{
+  position:relative;
+  border: 30rpx solid rgba(255, 255, 255, 0);
+}
+.funct1{
+  width: 100%;
+}
+.hot{
+  font-size: 30rpx;
+  text-align:right;
+}
+.fire{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 15rpx;
+}
+.divide{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: -30rpx;
+}
+.avator{
+  width:10%;
+  display: flex;
+  margin-top:80rpx;
+  flex-direction: column;
+  justify-content: left;
+  margin-bottom: 30rpx
+}
+.user-avatar{
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  border-radius: 50%;
+  background-size: cover;
+  background-color: white;
+}
+.responsor-avatar{
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  border-radius: 50%;
+  background-size: cover;
+  background-color: white;
+}
+.subfunc1{
+  width:80%;
+  border: 30rpx solid rgba(255, 255, 255, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  text-align: left;
+  word-wrap:break-word;
+}
+.top{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  word-wrap:break-word;
+}
+.title{
+  display: inline-block;
+  justify-content: left;
+  text-align: left;
+  width:90%;
+  word-wrap:break-word;
+  color:#5D5EA8;
+}
+.tab{
+  width:100%;
+  margin-top:10rpx;
+}
+.tag{
+  display: block;
+  /* word-wrap:break-word; */
+}
+.tagggg{
+  font-size: 30rpx;
+  width:100rpx;
+  height:60rpx;
+  background-color: rgba(93, 94, 168, 0.137);
+  text-align: center;
+  margin-right: 20rpx;
+}
+.tyyyy{
+  display: flex;
+  flex-direction: row;
+}
+.av_type{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.localArea{
+  border-radius: 5px;
+  margin-top: 20rpx;
+  background-color: rgba(93, 94, 168, 0.137);
+  border: 2rpx solid #F4D329;
+}
+.const-text{
+  font-size: 40rpx;
+  color:#5D5EA8;
+  margin-left: 30rpx;
+}
+.divLine2{
+ background: #EBBB1B;
+ margin-top: 10rpx;
+ margin-bottom: 10rpx;
+ margin-left: 30rpx;
+ width: 15%;
+ height: 5rpx;
+}
+.contnn{
+  display: inline-block;
+  min-width: 90%;
+  height: 40rpx;
+  font-size: 30rpx;
+  margin-left: 30rpx;
+  margin-bottom: 30rpx;
+  vertical-align: middle;
+  color: #999;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+.contnn2{
+  display: inline-block;
+  min-width: 90%;
+  min-height: 80rpx;
+  height: 40rpx;
+  margin-left: 30rpx;
+  margin-bottom: 20rpx;
+  vertical-align: middle;
+}
+.join1{
+  width: 40%;
+  background-color: rgba(255, 255, 255, 0.281);
+  color:#5D5EA8;
+  margin-bottom: 30rpx;
+  margin-top: 30rpx;
+}
+.join2{
+  width: 90%;
+  background-color: rgba(255, 255, 255, 0.281);
+  color:#5D5EA8;
+  margin-bottom: 30rpx;
+  margin-top: 30rpx;
+}
+.like-container{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.command{
+  width: 100%;
+
+}
+.judge{
+  display: flex;
+  flex-direction: column;
+  border: 10rpx rgba(255, 255, 255, 0) solid;
+  margin-bottom: 10rpx;
+}
+.command2{
+  width: 100%;
+}
+.swiperMain {
+  position:relative;
+  height:100%;
+  z-index: 0;
+}
+swiper{
+  width:100%;
+  height:100%;
+  position:fixed;
+}
+.slide-image{
+  width:100%;
+  height:100%;
+  background-repeat:no-repeat;
+  background-position: center top;
+  background-size:cover;
+}
+.userinfo-avatar {
+  border-radius: 50%;
+  margin-top: -0.5rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+.font{
+  color:#5D5EA8;
+}
+.font2{
+  margin-right: 20rpx;
+  font-size: 30rpx;
+}
+.font3{
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+}
+.divLine{
+  background: #EBBB1B;
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+  width: 100%;
+  height: 5rpx;
+}
+
+.tab-right {
+  width: 90%;
+  margin: 20rpx auto;
+  height: 405rpx;
+}
+.content-item {
+  height: 100rpx;
+  border-bottom: 1px solid #ede1d4;
+  width: 95%;
+}
+.text-box{
+    width:100%; 
+    position: relative;
+    min-height:160rpx;
+    margin-top: 17rpx;
+}
+.text-box text{
+   display:block;
+   visibility:hidden;
+   word-break:break-all;
+   word-wrap:break-word;
+}
+.text-box .textarea{
+  height:100%;
+  position: absolute;
+  left:0;
+  top:0;
+  overflow-y:hidden;
+  word-break:break-all;
+  word-wrap:break-word;
+  width:100%;
+  background-color: rgba(255, 255, 255, 0.281);
+  margin-bottom: 30rpx;
+  margin-top: 10rpx;
+}

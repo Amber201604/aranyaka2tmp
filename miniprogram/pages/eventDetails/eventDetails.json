@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "comment-row": "../../components/CommentRow/comment-row",
+    "weui-dialog": "./../../components/dialog/dialog/dialog"
+  }
+}

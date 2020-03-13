@@ -1,0 +1,125 @@
+<view class="swiperMain">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperChange">
+      <block wx:for="{{imgUrls}}" wx:key="index">
+          <swiper-item>
+              <view class="slide-image" style="{{item}}"></view>
+          </swiper-item>
+      </block>
+  </swiper>
+</view>
+<!-- 登录 -->
+<view class="all">
+  <!-- <button class="send" wx:if="{{!authorized}}" bindgetuserinfo="onGotUserInfo" open-type="getUserInfo"> Log in </button> -->
+
+  <!-- search搜索 -->
+  <view class="out-search">
+    <view class='search' wx:if="{{authorized}}">
+      <input class='searB' type='text' confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'></input>
+      <image class="" src='search.jpg' bindtap='query'></image>
+    </view>
+  </view>
+  <view class="divLine"></view>
+  <!-- 大标签，只有它保存小标签并集 -->
+  <view class="top-bar" wx:if="{{authorized}}">
+    <block wx:for="{{navList}}" wx:for-item="item" wx:key="index">
+      <view id="{{item.id}}" data-index="index" class="top-bar-item {{index == activeIndex ? 'top-bar-item-active' : ''}}" bindtap="filter">
+        <button hover="true" class="key_word" hover-class='button-hover'>{{item.title}}</button>
+      </view>
+    </block>
+  </view>
+  <!-- sort排序，也叫ordering -->
+  <view class="out-section">
+    <view class="section" wx:if="{{authorized}}">
+      <view class="in-section">
+        <picker bindchange="bindPickerChange" value="{{index0}}" range="{{sortingMethod}}">
+          <view class="picker">
+            排序：{{sortingMethod[index0]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="divLine"></view>
+  <!-- 全局置顶帖概括 -->
+  <view class="container">
+    <view class="page-body" >
+      <view class="zhidingbody" wx:for="{{topEvents}}" wx:for-item="event" wx:key="index">
+        <view class="zhidingtype" wx:if="{{event.maxUser<=0}}" data-id="{{event._id}}" bindtap="bindClickTopEvent">
+          <view class="sub-body" data-id="{{event._id}}">
+            <view class="line" data-id="{{event._id}}">
+              <text class="topi" data-id="{{event._id}}">{{event.title}}</text> 
+              <view class="hot" data-id="{{event._id}}">
+                <image class="fire" src="/images/tab/fire.png"></image>
+                <text class="font" data-id="{{event._id}}">{{event.juqi}}</text>
+              </view>
+            </view>
+            <text data-id="{{event._id}}"> {{event.cate[event.cate.length-1]}}</text>
+            <text data-id="{{event._id}}" >{{event.tag}}</text>
+            <!-- <text data-id="{{event._id}}">发布于: {{event.createTime}}</text>  -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 分校置顶帖概括 -->
+  <view class="container">
+    <view class="page-body" >
+      <view class="zhidingbody2" wx:for="{{topSchoolEvents}}" wx:for-item="event" wx:key="index">
+        <view class="zhidingtype" wx:if="{{event.maxUser<=0}}" data-id="{{event._id}}" bindtap="bindClickTopSchoolEvent">
+          <view class="sub-body" data-id="{{event._id}}">
+            <view class="line" data-id="{{event._id}}">
+              <text class="topi" data-id="{{event._id}}">{{event.title}}</text> 
+              <view class="hot" data-id="{{event._id}}">
+                <image class="fire" src="/images/tab/fire.png"></image>
+                <text class="font" data-id="{{event._id}}">{{event.juqi}}</text>
+              </view>
+            </view>
+            <text data-id="{{event._id}}"> {{event.cate[event.cate.length-1]}}</text>
+            <text data-id="{{event._id}}" >{{event.tag}}</text>
+            <!-- <text data-id="{{event._id}}">发布于: {{event.createTime}}</text>  -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 展示局概括 -->
+  <view class="container">
+    <view class="page-body" >
+      <view class="body" wx:for="{{events}}" wx:for-item="event" wx:key="index">
+        <view class="type" wx:if="{{event.maxUser<=0}}" data-id="{{event._id}}" bindtap="bindClickEvent">
+          <view class="sub-body" data-id="{{event._id}}">
+            <view class="line" data-id="{{event._id}}">
+              <text class="topi" data-id="{{event._id}}">{{event.title}}</text> 
+              <view class="hot" data-id="{{event._id}}">
+                <image class="fire" src="/images/tab/fire.png"></image>
+                <text class="font" data-id="{{event._id}}">{{event.juqi}}</text>
+              </view>
+            </view>
+            <text data-id="{{event._id}}"> {{event.cate[event.cate.length-1]}}</text>
+            <text data-id="{{event._id}}" >{{event.tag}}</text>
+            <!-- <text bindtap="bindClickEvent" data-id="{{event._id}}">发布于: {{event.createTime}}</text>  -->
+          </view>
+        </view>
+        <view class="type1" wx:if="{{event.maxUser>0}}" data-id="{{event._id}}" bindtap="bindClickEvent">
+          <view class="sub-body" data-id="{{event._id}}">
+            <view class="line" data-id="{{event._id}}">
+              <text class="topi" data-id="{{event._id}}">{{event.title}}</text> 
+              <view class="hot" data-id="{{event._id}}">
+                <image class="fire" src="/images/tab/fire.png"></image>
+                <text class="font" data-id="{{event._id}}">{{event.juqi}}</text>
+              </view>
+            </view>
+            <text data-id="{{event._id}}"> {{event.cate[event.cate.length-1]}}</text>
+            <text data-id="{{event._id}}"> {{event.tag}}</text> 
+            <!-- <text data-id="{{event._id}}"> {{event.userList.length}} / {{event.maxUser}}</text> -->
+            <!-- <text bindtap="bindClickEvent" data-id="{{event._id}}">发布于:{{event.createTime}}</text>  -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="divLine"></view>
+  <view class="line22"> 
+  <text src="http://www.beian.miit.gov.cn" class="line2">浙ICP备19041945号</text>
+  </view>
+</view>

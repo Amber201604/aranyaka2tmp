@@ -1,0 +1,19 @@
+<!--pages/reportSuccessMsg/reportSuccessMsg.wxml-->
+<view class="page">
+    <mp-msg type="success" title="举报成功">
+        <view slot="desc">您的举报已经成功提交，请耐心等待我们的处理结果</view>
+        <!-- <view slot="extend">
+            <view>您可以前往“我的发起 => 举报”查看你的历史举报</view>
+        </view> -->
+        <view slot="handle">
+            <button class="weui-btn" type="primary" ontap="onNavBackToPostTap">返回帖子</button>
+            <!-- <button class="weui-btn" type="default">我的举报</button> -->
+        </view>
+        <view slot="footer">
+            <view class="weui-footer__links">
+                <navigator url="" class="weui-footer__link"></navigator>
+            </view>
+            <view class="weui-footer__text">Copyright © 2008-2016 weui.io</view>
+        </view>
+    </mp-msg>
+</view>

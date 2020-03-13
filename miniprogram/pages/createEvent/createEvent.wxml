@@ -1,0 +1,98 @@
+<view wx:if="{{!authorized}}"> Not Login </view>
+<view wx:if="{{authorized}}">
+  <view class="swiperMain">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperChange">
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <swiper-item>
+          <view class="slide-image" style="{{item}}"></view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="all">
+    <view class="content">
+      <view class="head">
+        <view class="section__title">局 / 帖</view>
+        <view class="body-view">
+          <switch checked="{{switch1Checked}}" bindchange="switch1Change"/>
+        </view>
+      </view>
+      <form bindsubmit="formSubmit" bindreset="formReset">
+        <view class="input">
+          <view class="input2">
+            <view class="section">
+                <input placeholder="标题" style="width:100%" name="eventTitle" bindinput="bindTitleChange" value="{{title}}" bindlongtap='copy'/>
+            </view>
+            <view class="divLine"></view>
+            <view class="block2">
+              <view class="section">
+                <view class="section__title"><text selectable="true">主题</text></view>
+                <view class="picker">
+                  <picker bindchange="bindCateChange" value="{{index}}" range="{{cates}}"><text>{{cates[index]}}</text></picker>
+                </view>
+              </view>
+              <view class="divLine"></view>
+              <view class="section" bindinput="bindMaxUserChange">
+                <view class="section_title" bindinput="bindMaxUserChange">人数</view>
+                <input type="number" style="width:60%" name="maxUserNumber" value="{{maxUser}}" bindinput="bindMaxUserChange" selectable="true"/>
+              </view>
+              <view class="divLine"></view>
+              <view class="section2" bindinput="bindTagChange">
+                <!-- <button class="save-btn2" bindtap="tags_picker">Tag</button>
+                <view wx:if="{{tag}}">已选Tag   
+                  <view wx:for='{{tag}}' wx:for-item="item">{{item}}</view>
+                </view> -->
+                <view class="section__title" bindinput="bindTagChange"><text selectable="true">Tag</text></view>
+                <view class="text-box">
+                      <textarea class="textarea" name="tag" value="{{tag}}" placeholder="例：补课，数学，图书馆" bindinput="bindTagChange" selectable="true"/>
+                </view>
+              </view>
+            </view>
+            <view class="divLine"></view>
+            <view class="block3">
+              <view class="picker">  
+                <picker class="picker2" mode="date" value="{{date}}" bindchange="bindDateChange">
+                  <view >  
+                    <text selectable="true">日期 {{date}}</text>  
+                  </view>
+                </picker>
+              </view>
+              <view class="picker"> 
+                <picker class="picker2" mode="time" value="{{time}}" bindchange="bindeTimeChange">
+                  <view> 
+                    <text selectable="true">时间 {{time}}</text> 
+                  </view>
+                </picker>
+              </view>
+            </view>
+            <view class="divLine"></view>
+            <view class="section2">
+              <view class="text-box2">
+              <textarea class="textarea2" placeholder="请输入详细信息" name="content" value="{{content}}" bindinput="bindContentChange"/>
+              </view>
+            </view>
+          </view>
+          <view class='conf-wrap'>
+          <view wx:for="{{images}}" class='up-img-wrap' wx:key="{{index}}" wx:for-item='item'>
+            <!-- 图片 -->
+            <image src='{{item}}' class='up-img' mode='aspectFill' bindtap='previewImg' data-id='{{index}}'></image>
+            <!-- 删除按钮 -->
+              <image class="del-img" mode='aspectFill' src="{{delImg}}" bindtap='delImg' data-id='{{index}}'></image>
+          </view>
+          <!-- 图片上传按钮 -->
+          <view class='up-img-wrap' wx:if="{{tmp_images.length <9}}"><image bindtap='doUpload' src='../../images/upload.png' class='up-img' ></image> </view>
+        </view>
+
+          
+          <!-- <block wx:for="{{images}}" wx:for-item="image">
+            <image src="{{image}}"  bindtap="previewImg" mode="aspectFit" class="uploader-image"></image>
+          </block> -->
+          <view class="divLine2"></view>
+          <view class="btn-area">
+            <button class="send" formType="submit">发送</button>
+          </view>
+        </view>
+      </form>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,53 @@
+<view class="swiperMain">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperChange">
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+          <swiper-item>
+              <view class="slide-image" style="{{item}}"></view>
+          </swiper-item>
+      </block>
+  </swiper>
+</view>
+<view class="all">
+<!-- 上传图片 -->
+  <!-- <view class="uploader"> -->
+    <image class="avator" src="{{avatarUrl}}" class="userinfo-avatar" ></image>
+    <!-- <button class="uploader-text" bindtap="doUpload">上传头像</button> -->
+    <!-- <view class="uploader-container" wx:if="{{imagePath}}">
+      <image class="uploader-image" src="{{imagePath}}" mode="aspectFit" bindtap="previewImg"></image>
+    </view> -->
+  <!-- </view> -->
+  <view class="divLine"></view>
+  <form bindsubmit="formSubmit">
+
+    <view>{{nickName}}</view>
+    <view class="divLine"></view>
+    微信号：<input placeholder="请输入" type="text" name="wechatName" value="{{wechatName}}"/>
+    <view class="divLine"></view>
+    <view class="section" wx:if="{{!authorized}}">
+      <view class="section__title">学校（最多修改3次，已修改{{schoolTimes}}次）：</view>
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="picker">
+          {{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+        </view>
+      </picker>
+    </view>
+    <view class="divLine"></view>
+    <view><input type="text" name="faculty" value="{{faculty}}" placeholder="专业"/></view>
+    <view class="divLine"></view>
+    <!-- <view>最高学历(可选)<radio-group name="grade" class="level" value="{{grade}}">
+        <view class="label">
+          <label class="label1"><radio value="大一" />大一</label>
+          <label class="label1"><radio value="大二" />大二</label>
+          <label class="label1"><radio value="大三" />大三</label>
+        </view>
+        <view class="label">
+          <label class="label1"><radio value="大四" />大四</label>
+          <label class="label1"><radio value="硕士" />硕生</label>
+          <label class="label1"><radio value="博士" />博士</label>
+        </view>
+    </radio-group>
+    </view> -->
+    <button class="submitt" form-type="submit">提交</button>
+
+  </form>
+</view>

@@ -1,0 +1,58 @@
+<!-- <view wx:if="{{!authorized}}">Not login</view> -->
+<view>
+<view class="swiperMain">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperChange">
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+          <swiper-item>
+              <view class="slide-image" style="{{item}}"></view>
+          </swiper-item>
+      </block>
+  </swiper>
+</view>
+<view class="container">
+  <view class="all">
+    <view class="avator">
+      <image class="userinfo-avatar" src="{{avatarUrl}}"></image>
+      <text>{{userInfo.nickName}}</text>
+      <text>{{userInfo.organization}}</text>
+      
+    </view>
+    <view class="out-edit">
+      <view class="edit">
+        <button class="bottt" bindtouchend="onEditProfile">编辑个人信息</button>
+      </view>
+    </view>
+    <view class="divLine"></view>
+    <view class="like-container">
+      <view class="like1">
+        <button class="headline" bindtouchend="myEvent">我的发起</button>
+        
+        <button class="headline" bindtouchend="myReplies">
+          <image class="red-img" mode='aspectFill' src="../../images/icon/redPoint.png" wx:if="{{haveNewMention}}"/>
+           我的消息
+        </button>
+               
+      </view>
+      <view class="like1">
+        <button class="headline" bindtap="topEvent" wx:if="{{isAdmin}}">全局置顶帖</button>
+        <button class="headline" bindtap="topSchoolEvent" wx:if="{{isSchoolAdmin}}">学校置顶帖</button>
+      </view>
+      <!-- <view class="like1">
+        <button class="headline" bindtap="toAdminPanel" wx:if="{{isSchoolAdmin}}">管理员删帖</button>
+        <button class="headline" bindtap="topSchoolEvent" wx:if="{{isSchoolAdmin}}">学校置顶帖</button>
+      </view> -->
+    </view>
+    <view class="divLine"></view>
+    <view class="join-in">
+      <button class="okbtn" open-type='contact'>树洞</button>      
+      <view class="divLine4"></view>
+      <!-- <web-view src="https://mp.weixin.qq.com/s/AXstvgxIfoimwouN2ihcEQ">新手帮助</text> -->
+      <!-- <view class="divLine4"></view> -->
+      <text bindtouchend="onJumpToContact">联系森林书</text>
+      <view class="divLine4"></view>
+      <text bindtap="onJumpToAbout">关于森林书</text>
+      <view class="divLine4"></view>
+    </view>
+  </view>
+</view>
+</view>

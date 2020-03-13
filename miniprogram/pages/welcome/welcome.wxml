@@ -1,0 +1,60 @@
+<!--pages/welcome/welcome.wxml-->
+<view class="swiperMain1">
+  <swiper indicator-dots="{{indicatorDots}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperChange">
+      <block wx:for="{{imgUrls}}" wx:key="index">
+          <swiper-item>
+              <view class="slide-image1" style="{{item}}"></view>
+          </swiper-item>
+      </block>
+  </swiper>
+</view>
+<view class="all1">
+  <view  class="avator1">
+  <button wx:if="{{canIUse}}" class="headline1"  bindgetuserinfo="onGotUserInfo" open-type="getUserInfo"> Log in </button>
+  <view wx:else>请升级微信至最新版本</view>
+  <text class="line1">校友圈小程序上线啦！！是我们同学自己做的校内论坛哦！非盈利！！欢迎大家上来发布实用信息，吐槽吃瓜，钻树洞，结交新朋友！</text>
+  </view>
+</view>
+<view class="all">
+  <!-- 展示局概括 -->
+  <view class="divLine"></view>
+  <view class="container">
+    <view class="page-body" >
+      <view class="body" wx:for="{{events}}" wx:for-item="event" wx:key="index">
+        <view class="type" wx:if="{{event.maxUser<=0}}" data-id="{{event._id}}" bindtap="bindClickEvent">
+          <view class="sub-body" data-id="{{event._id}}">
+            <view class="line" data-id="{{event._id}}">
+              <text class="topi" data-id="{{event._id}}">{{event.title}}</text> 
+              <view class="hot" data-id="{{event._id}}">
+                <image class="fire" src="/images/tab/fire.png"></image>
+                <text class="font" data-id="{{event._id}}">{{event.juqi}}</text>
+              </view>
+            </view>
+            <text data-id="{{event._id}}"> {{event.cate[event.cate.length-1]}}</text>
+            <text data-id="{{event._id}}" >{{event.tag}}</text>
+            <!-- <text bindtap="bindClickEvent" data-id="{{event._id}}">发布于: {{event.createTime}}</text>  -->
+          </view>
+        </view>
+        <view class="type1" wx:if="{{event.maxUser>0}}" data-id="{{event._id}}" bindtap="bindClickEvent">
+          <view class="sub-body" data-id="{{event._id}}">
+            <view class="line" data-id="{{event._id}}">
+              <text class="topi" data-id="{{event._id}}">{{event.title}}</text> 
+              <view class="hot" data-id="{{event._id}}">
+                <image class="fire" src="/images/tab/fire.png"></image>
+                <text class="font" data-id="{{event._id}}">{{event.juqi}}</text>
+              </view>
+            </view>
+            <text data-id="{{event._id}}"> {{event.cate[event.cate.length-1]}}</text>
+            <text data-id="{{event._id}}"> {{event.tag}}</text> 
+            <!-- <text data-id="{{event._id}}"> {{event.userList.length}} / {{event.maxUser}}</text> -->
+            <!-- <text bindtap="bindClickEvent" data-id="{{event._id}}">发布于:{{event.createTime}}</text>  -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </view> 
+  <view class="divLine"></view>
+  <view class="line22"> 
+  <text src="http://www.beian.miit.gov.cn" class="line2">浙ICP备19041945号</text>
+  </view>
+</view>

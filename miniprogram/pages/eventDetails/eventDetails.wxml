@@ -1,0 +1,99 @@
+<!--miniprogram/pages/eventDetails/eventDetails.wxml-->
+<view class="swiperMain">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperChange">
+      <block wx:for="{{imgUrls}}" wx:key="index">
+          <swiper-item>
+              <view class="slide-image" style="{{item}}"></view>
+          </swiper-item>
+      </block>
+  </swiper>
+</view>
+<view class="container">
+  <!-- {{json}} -->
+  <view class="funct1">
+    <view class="hot">
+      <image class="fire" src="/images/tab/fire.png"></image>
+      <text class="font" selectable="true">{{juqi}}</text>
+    </view>
+    <view class="divide">
+      <view class="avatar">
+        <image class="user-avatar" src="{{creator_avatar}}"></image>
+      </view>
+      <view class='subfunc1'>
+        <view class="top">
+          <text class='title' selectable="true">{{creator_nickName}}</text>
+          <text class='title' selectable="true">{{title}}</text>
+        </view>
+        <view class="tab">
+          <view class="tag">
+            <text style="word-wrap:break-word" class="font2" selectable="true">{{tag}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="divLine"></view>
+    <text class="font2"><text class="tagggg">{{cate[cate.length-1]}}</text>  {{content}}</text>
+    <block wx:for="{{images}}" wx:for-item="image" wx:key="index">
+      <image src="{{image}}"  data-src="{{image}}" bindtap="previewImage" mode="aspectFit" class="uploader-image"></image>
+    </block>
+    <view class="divLine"></view>
+    <view class="tab1" wx:if="{{jutie}}">
+      <view class="localArea" >
+        <text class="const-text">Date:</text>
+        <view class="divLine2"></view>
+        <text class="contnn" >{{eventDate}} {{eventTime}}</text>
+      </view>
+      <view class="localArea">
+        <text class="const-text" >Current: {{userList.length}} / {{maxUser}}</text>
+        <view class="contnn2">
+          <block wx:for="{{tmp_avatars}}" wx:for-item="image" wx:key="index">
+            <image class="userinfo-avatar" src="{{image}}" bindtap="userDetail"></image>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{jutie}}" class="like-container">
+    <button class="join1" bindtap="join" data-id="{{_id}}" disabled="{{disabled}}">入局</button>
+    <button class="join1" bindtap="quit" data-id="{{_id}}" >退局</button>
+    </view>
+    <button class="join1" 
+      wx:if="{{canRequireHolderWxid}}"
+      bindtap="requireHolderWxid">申请局主微信</button> 
+    <button class="join2" wx:if="{{isCreator}}" bindtap="delete" data-id="{{_id}}" data-isadmin="no">删除</button>
+    <button class="join2" wx:if="{{isSchoolAdmin}}" bindtap="delete" data-id="{{_id}}" data-isadmin="yes">管理员删除</button>
+  </view>
+  <!-- <view class="divLine"></view> -->
+  <view class="command">
+    <!-- 9 -->
+    <text class="font">公开讨论</text>
+    <block wx:for="{{comments}}" wx:for-item='item' wx:key="index">
+      <view class="divide">
+        <view class="avatar"><image src="{{item.avatar}}" class="responsor-avatar"></image></view>
+        <text class="subfunc1">{{item.nickName}}: {{item.content}}</text>
+        <!-- <text class="font3">{{item.postBy}}</text>
+        <text class="font3" data-id='index' bindtap='delresp' wx:if='{{isResp}}'>删</text> -->
+      </view>
+    </block>
+  </view>
+  <view class="command">
+    <!-- 8 -->
+    <block wx:for="{{commentIds}}" wx:for-item='commentId' wx:key="index">
+      <comment-row commentId="{{commentId}}" pageType="post" showicons="true"></comment-row>
+    </block>
+  </view>
+  <view class="command2">
+    <form bindsubmit="formSubmit">
+        <view class="text-box">
+              <text selectable="true">{{currentInput}}</text>
+              <textarea selectable="true" class="textarea" placeholder="评论" type="text" name="comment" value="{{comment}}" />
+        </view>
+        <button class="join1" form-type="submit">回复</button>
+    </form>
+  </view>
+  <!-- <button bindtap="revise" type='primary' wx:if="{{isCreator}}">修改</button> -->
+  <!-- <weui-dialog title="成功" show="{{showRequireWXIDSuccessDialog}}"
+  bindbuttontap="toggleShowRequireWXIDSuccessDialog"
+  buttons="{{wxidSuccessDialogButton}}">
+  <text>已成功发送微信号请求，您可以在系统消息里查看对方回复</text>
+  </weui-dialog> -->
+</view>
